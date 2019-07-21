@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Alt+/" to open settings.
-// @version      1.0.0
+// @version      1.0.1
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -297,7 +297,8 @@ const actions = {
       let stopPropagation = true;
       let preventDefault = true;
 
-      if (!target.matches('#taginput-fancy-tag_input') || e.ctrlKey || e.altKey) {
+      if ((target.matches('#taginput-fancy-tag_input') && (e.ctrlKey || e.altKey))
+        || !target.matches('.input, input, textarea')) {
         click(submitButtonSelector);
       } else {
         stopPropagation = false;
