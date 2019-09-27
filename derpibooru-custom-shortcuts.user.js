@@ -631,7 +631,8 @@ function matchKeybind(key, ctrl, alt, shift) {
       if (key == bindKey
         && ctrl == bindCtrl
         && alt == bindAlt
-        && shift == bindShift) {
+        && shift == bindShift
+        && actions.hasOwnProperty(name)) {
         return name;
       }
     }
