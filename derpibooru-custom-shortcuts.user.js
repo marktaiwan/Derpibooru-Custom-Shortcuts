@@ -175,7 +175,21 @@ const actions = {
   },
   toggleKeyboardNav: {
     name: 'Toggle keyboard navigation mode',
-    fn: keyboardNavToggle
+    fn: () => {
+      const mediaBoxSelector = '.js-resizable-media-container .media-box';
+      const mediaBox = $('.media-box.highlighted');
+
+      if (mediaBox) {
+        mediaBox.classList.remove('highlighted');
+      } else {
+        const prevSelected = $(`.media-box[data-image-id="${sessionStorage.lastSelectedThumb}"]`);
+        if (prevSelected && isVisible(prevSelected)) {
+          highlight(prevSelected);
+        } else {
+          highlight(getFirstVisibleOrClosest(mediaBoxSelector));
+        }
+      }
+    }
   },
   openSelected: {
     name: 'Open selected image',
@@ -534,22 +548,6 @@ function scroll(direction, event) {
     keyboardNav(direction, mediaBox, !event.repeat);
   } else if (!event.repeat){
     smoothscroll(direction, type);
-  }
-}
-
-function keyboardNavToggle() {
-  const mediaBoxSelector = '.js-resizable-media-container .media-box';
-  const mediaBox = $('.media-box.highlighted');
-
-  if (mediaBox) {
-    mediaBox.classList.remove('highlighted');
-  } else {
-    const prevSelected = $(`.media-box[data-image-id="${sessionStorage.lastSelectedThumb}"]`);
-    if (prevSelected && isVisible(prevSelected)) {
-      highlight(prevSelected);
-    } else {
-      highlight(getFirstVisibleOrClosest(mediaBoxSelector));
-    }
   }
 }
 
