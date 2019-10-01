@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.0
+// @version      1.2.1
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -91,7 +91,6 @@ const presets = {
     scrollLeft:         [{key: 'KeyA'}, {key: 'ArrowLeft'}],
     scrollRight:        [{key: 'KeyD'}, {key: 'ArrowRight'}],
     toggleKeyboardNav:  [{key: 'KeyQ'}],
-    toggleTagSelect:    [{key: 'KeyT'}],
     openSelected:       [{key: 'KeyE'}],
     openInNewTab:       [{key: 'KeyE', shift: true}],
     prev:               [{key: 'KeyZ'}],
@@ -183,48 +182,33 @@ const actions = {
     repeat: true
   },
   toggleKeyboardNav: {
-    name: 'Toggle keyboard navigation mode',
+    name: 'Toggle keyboard selection mode',
     fn: () => {
-      const mediaBox = $('.media-box.highlighted');
+      const highlighted = $('.media-box.highlighted, .tag-list .tag.dropdown.highlighted');
 
-      if (mediaBox) {
-        unhighlight(mediaBox);
+      if (highlighted) {
+        unhighlight(highlighted);
       } else {
         const prevSelected = $(`.media-box[data-image-id="${sessionStorage.lastSelectedThumb}"]`);
         if (prevSelected && isVisible(prevSelected)) {
           highlight(prevSelected);
-        } else {
-          highlight(getFirstVisibleOrClosest(THUMB_SELECTOR));
-        }
-      }
-    }
-  },
-  toggleTagSelect: {
-    name: 'Toggle tag selection',
-    fn: () => {
-      const selectedTag = $('.tag-list .tag.dropdown.highlighted');
-
-      if (selectedTag) {
-        unhighlight(selectedTag);
-      } else {
-        if (lastSelectedTag && isVisible(lastSelectedTag)) {
+        } else if (lastSelectedTag && isVisible(lastSelectedTag)) {
           highlight(lastSelectedTag);
         } else {
-          highlight(getFirstVisibleOrClosest(TAG_SELECTOR));
+          highlight(getFirstVisibleOrClosest(`${THUMB_SELECTOR}, ${TAG_SELECTOR}`));
         }
       }
-
     }
   },
   openSelected: {
-    name: 'Open selected image',
+    name: 'Open selected',
     fn: () => {
       const selected = $('.media-box.highlighted, .tag.highlighted');
       if (selected) click('.media-box__content a, a.tag__name', selected);
     }
   },
   openInNewTab: {
-    name: 'Open selected image in new tab',
+    name: 'Open selected in new tab',
     fn: () => {
       const selected = $('.media-box.highlighted, .tag.highlighted');
       if (selected) {
