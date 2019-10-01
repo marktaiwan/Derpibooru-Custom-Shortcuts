@@ -96,6 +96,7 @@ const presets = {
     tagEdit:            [{key: 'KeyL'}],
     // tagSubmit:          [],
     toggleScale:        [{key: 'KeyV'}],
+    // toggleVideo:        [],
     toggleSound:        [{key: 'KeyM'}],
     focusSearch:        [{key: 'KeyS', shift: true}],
     focusComment:       [{key: 'KeyC', shift: true}],
@@ -290,6 +291,18 @@ const actions = {
   toggleScale: {
     name: 'Cycle through image scaling',
     fn: () => click('#image-display')
+  },
+  toggleVideo: {
+    name: 'Play/pause webms',
+    fn: () => {
+      const video = $('video#image-display, .highlighted .video-container video');
+      if (!video) return;
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
   },
   toggleSound: {
     name: 'Mute/unmute webms',
