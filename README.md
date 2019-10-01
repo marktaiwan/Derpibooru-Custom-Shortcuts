@@ -29,6 +29,7 @@ Toggle on and off with the `Q` key by default. When enabled, the scroll up/down/
 - Scroll left
 - Scroll right
 - Enable keyboard navigation of gallery
+- Tag selection mode
 - Open selected image when keyboard navigation is enabled
 - Open selected image in new tab - Due to browser restrictions, you need to use `ctrl + enter` if you want to open the tab in background.
 - Previous page/image
