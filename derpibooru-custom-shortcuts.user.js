@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.1
+// @version      1.2.2
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -195,7 +195,7 @@ const actions = {
         } else if (lastSelectedTag && isVisible(lastSelectedTag)) {
           highlight(lastSelectedTag);
         } else {
-          highlight(getFirstVisibleOrClosest(`${THUMB_SELECTOR}, ${TAG_SELECTOR}`));
+          highlight(getFirstVisibleOrClosest(THUMB_SELECTOR) || getFirstVisibleOrClosest(TAG_SELECTOR));
         }
       }
     }
