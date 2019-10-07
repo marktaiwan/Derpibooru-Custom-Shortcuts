@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.2
+// @version      1.2.3
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -418,23 +418,18 @@ const actions = {
 
 const smoothscroll = (function () {
   let startTime = null;
-  let prevFrame = 0;
+  let pendingFrame = null;
   let keydown = {up: false, down: false, left: false, right: false};
 
   function reset() {
     startTime = null;
     keydown = {up: false, down: false, left: false, right: false};
+    unsafeWindow.cancelAnimationFrame(pendingFrame);
   }
   function noKeyDown() {
     return !(keydown.up || keydown.down || keydown.left || keydown.right);
   }
   function step(timestamp) {
-
-    // Only run step() once per animation frame. Discard any subsequent runs
-    // with interval greatly shorter than 16ms without resetting.
-    const interval = timestamp - prevFrame;
-    prevFrame = timestamp;
-    if (interval < 10) return;
 
     if (noKeyDown() || !document.hasFocus()) {
       reset();
@@ -463,17 +458,18 @@ const smoothscroll = (function () {
     y = Math.sin(rad) * -1;
 
     window.scrollBy(Math.round(x * velocity), Math.round(y * velocity));
-    window.requestAnimationFrame(step);
+    pendingFrame = window.requestAnimationFrame(step);
   }
 
   return function (direction, type) {
     switch (type) {
       case 'keydown':
-        if (noKeyDown()) window.requestAnimationFrame(step);
+        if (noKeyDown()) pendingFrame = window.requestAnimationFrame(step);
         keydown[direction] = true;
         break;
       case 'keyup':
         keydown[direction] = false;
+        if (noKeyDown()) reset();
         break;
     }
   };
