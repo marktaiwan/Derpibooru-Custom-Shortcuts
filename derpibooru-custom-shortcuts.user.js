@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.4
+// @version      1.2.5
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -304,7 +304,7 @@ const actions = {
   toggleVideo: {
     name: 'Play/pause webms',
     fn: () => {
-      const video = $('video#image-display, .highlighted .video-container video');
+      const video = $('video#image-display, .highlighted .image-container video');
       if (!video) return;
       if (video.paused) {
         video.play();
@@ -316,17 +316,18 @@ const actions = {
   toggleSound: {
     name: 'Mute/unmute webms',
     fn: () => {
-      const video = $('video#image-display, .highlighted .video-container video');
+      const video = $('video#image-display, .highlighted .image-container video');
       if (!video) return;
       video.muted = !video.muted;
 
       // SIN: Compatibility hack with Webm Volume Toggle because I
       //      don't know how to fix it properly in the other script
       const container = video.closest('.video-container');
+      if (!container) return;
+
       const button = $('.volume-toggle-button', container);
       container.dataset.isMuted = video.muted ? '1' : '0';
 
-      if (!button) return;
       if (container.dataset.isMuted == '0') {
         button.classList.add('fa-volume-up');
         button.classList.remove('fa-volume-off');
