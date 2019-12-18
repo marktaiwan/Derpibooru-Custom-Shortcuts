@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.5
+// @version      1.2.6
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -9,7 +9,6 @@
 // @supportURL   https://github.com/marktaiwan/Derpibooru-Custom-Shortcuts/issues
 // @match        https://*.derpibooru.org/*
 // @match        https://*.trixiebooru.org/*
-// @grant        GM_addStyle
 // @grant        unsafeWindow
 // @inject-into  content
 // @noframes
@@ -935,7 +934,13 @@ function keyHandler(e) {
 }
 
 function init() {
-  GM_addStyle(CSS);
+  if (!document.getElementById(`${SCRIPT_ID}-style`)) {
+    const styleElement = document.createElement('style');
+    styleElement.setAttribute('type', 'text/css');
+    styleElement.id = `${SCRIPT_ID}-style`;
+    styleElement.innerHTML = CSS;
+    document.body.insertAdjacentElement('afterend', styleElement);
+  }
 
   // Initialize localStorage on first run
   if (localStorage.getItem(SCRIPT_ID) == null) localStorage.setItem(SCRIPT_ID, '{}');
