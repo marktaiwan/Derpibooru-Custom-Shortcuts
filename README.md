@@ -30,7 +30,8 @@ Toggle on and off with the `Q` key by default. When enabled, the scroll up/down/
 - Scroll right
 - Enable keyboard selection of images and tags
 - Open selected image when keyboard navigation is enabled
-- Open selected image in new tab - Due to browser restrictions, you need to use `ctrl + enter` if you want to open the tab in background.
+- Open selected image in new tab
+- Open selected in background tab
 - Previous page/image
 - Next page/image
 - Open source URL

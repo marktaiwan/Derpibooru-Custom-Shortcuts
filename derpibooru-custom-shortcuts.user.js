@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.6
+// @version      1.2.7
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -10,6 +10,7 @@
 // @match        https://*.derpibooru.org/*
 // @match        https://*.trixiebooru.org/*
 // @grant        unsafeWindow
+// @grant        GM_openInTab
 // @inject-into  content
 // @noframes
 // ==/UserScript==
@@ -93,6 +94,7 @@ const presets = {
     toggleKeyboardNav:  [{key: 'KeyQ'}],
     openSelected:       [{key: 'KeyE'}],
     openInNewTab:       [{key: 'KeyE', shift: true}],
+    // OpenInBackground:   [],
     prev:               [{key: 'KeyZ'}],
     next:               [{key: 'KeyX'}],
     // source:             [],
@@ -214,6 +216,16 @@ const actions = {
       if (selected) {
         const anchor = $('.media-box__content a, a.tag__name', selected);
         window.open(anchor.href, '_blank');
+      }
+    }
+  },
+  OpenInBackground: {
+    name: 'Open selected in background tab',
+    fn: () => {
+      const selected = $('.media-box.highlighted, .tag.highlighted');
+      if (selected) {
+        const anchor = $('.media-box__content a, a.tag__name', selected);
+        GM_openInTab(anchor.href, {active: false});
       }
     }
   },
