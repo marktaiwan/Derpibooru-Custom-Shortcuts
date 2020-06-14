@@ -1,11 +1,11 @@
-# Derpibooru Custom Shortcuts
+# Furbooru Custom Shortcuts
 
-Custom Shortcuts is an userscript for the site [Derpibooru](https://derpibooru.org/), and enables the customization the site's original keyboard shortcuts and many additional functions, including a keyboard navigation mode.
+Custom Shortcuts is an userscript for the site [Furbooru](https://furbooru.org/), and enables the customization the site's original keyboard shortcuts and many additional functions, including a keyboard navigation mode.
 
 ## Installation
 An userscript manager such as [Violentmonkey](https://violentmonkey.github.io/) is required.
 
-[Click here to install](https://github.com/marktaiwan/Derpibooru-Custom-Shortcuts/raw/master/derpibooru-custom-shortcuts.user.js)
+[Click here to install](https://github.com/marktaiwan/Derpibooru-Custom-Shortcuts/raw/furbooru/furbooru-custom-shortcuts.user.js)
 
 ## User guide
 By default, the script makes no changes or additions to Derpibooru's default shortcuts. Upon installation, users should open up the settings with `ctrl + shift + /` to begin customization.

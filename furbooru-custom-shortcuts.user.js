@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Derpibooru Custom Shortcuts
+// @name         Furbooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
 // @version      1.2.7
 // @author       Marker
@@ -7,8 +7,7 @@
 // @namespace    https://github.com/marktaiwan/
 // @homepageURL  https://github.com/marktaiwan/Derpibooru-Custom-Shortcuts
 // @supportURL   https://github.com/marktaiwan/Derpibooru-Custom-Shortcuts/issues
-// @match        https://*.derpibooru.org/*
-// @match        https://*.trixiebooru.org/*
+// @match        https://*.furbooru.org/*
 // @grant        unsafeWindow
 // @grant        GM_openInTab
 // @inject-into  content
