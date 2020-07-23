@@ -92,8 +92,8 @@ const presets = {
     scrollRight:        [{key: 'KeyD'}, {key: 'ArrowRight'}],
     toggleKeyboardNav:  [{key: 'KeyQ'}],
     openSelected:       [{key: 'KeyE'}],
-    openInNewTab:       [{key: 'KeyE', shift: true}],
-    // OpenInBackground:   [],
+    // openInNewTab:       [],
+    OpenInBackground:   [{key: 'KeyE', shift: true}],
     prev:               [{key: 'KeyZ'}],
     next:               [{key: 'KeyX'}],
     // source:             [],
@@ -102,9 +102,9 @@ const presets = {
     favorite:           [{key: 'KeyF', shift: true}],
     // toIndex:            [],
     tagEdit:            [{key: 'KeyL'}],
-    // tagSubmit:          [],
+    tagSubmit:          [{key: 'KeyL', ctrl: true}],
     toggleScale:        [{key: 'KeyV'}],
-    // toggleVideo:        [],
+    toggleVideo:        [{key: 'KeyN'}],
     toggleSound:        [{key: 'KeyM'}],
     focusSearch:        [{key: 'KeyS', shift: true}],
     focusComment:       [{key: 'KeyC', shift: true}],
@@ -962,7 +962,7 @@ function init() {
     preset_3: presets.preset_3,
     global: presets.global
   });
-  if (getStorage('usePreset') == null) setStorage('usePreset', 'default');
+  if (getStorage('usePreset') == null) setStorage('usePreset', 'preset_1');
 
   // 'capture' is set to true so that the event is dispatched to the handler
   // before the native ones, so that the site shortcuts can be disabled
