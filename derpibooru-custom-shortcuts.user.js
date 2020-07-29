@@ -924,7 +924,7 @@ function keyHandler(e) {
   }
 
   // By default not to run on site inputs
-  if (e.target.matches('.input') || e.target.matches(ownSettingsSelector)) {
+  if (e.target.matches('input, .input') || e.target.matches(ownSettingsSelector)) {
     stopPropagation = false;
     preventDefault = false;
   }
@@ -932,7 +932,7 @@ function keyHandler(e) {
   if (command
     && (actions[command].constant || (e.type == 'keydown'))
     && (actions[command].repeat || !e.repeat)
-    && (actions[command].input || !e.target.matches('.input'))
+    && (actions[command].input || !e.target.matches('input, .input'))
     && !e.target.matches(ownSettingsSelector)) {
 
     const o = actions[command].fn(e) || {};
