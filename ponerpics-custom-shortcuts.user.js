@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ponerpics Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.7
+// @version      1.2.8
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -92,8 +92,8 @@ const presets = {
     scrollRight:        [{key: 'KeyD'}, {key: 'ArrowRight'}],
     toggleKeyboardNav:  [{key: 'KeyQ'}],
     openSelected:       [{key: 'KeyE'}],
-    openInNewTab:       [{key: 'KeyE', shift: true}],
-    // OpenInBackground:   [],
+    // openInNewTab:       [],
+    OpenInBackground:   [{key: 'KeyE', shift: true}],
     prev:               [{key: 'KeyZ'}],
     next:               [{key: 'KeyX'}],
     // source:             [],
@@ -102,9 +102,9 @@ const presets = {
     favorite:           [{key: 'KeyF', shift: true}],
     // toIndex:            [],
     tagEdit:            [{key: 'KeyL'}],
-    // tagSubmit:          [],
+    tagSubmit:          [{key: 'KeyL', ctrl: true}],
     toggleScale:        [{key: 'KeyV'}],
-    // toggleVideo:        [],
+    toggleVideo:        [{key: 'KeyN'}],
     toggleSound:        [{key: 'KeyM'}],
     focusSearch:        [{key: 'KeyS', shift: true}],
     focusComment:       [{key: 'KeyC', shift: true}],
@@ -692,7 +692,7 @@ function matchKeybind(key, ctrl, alt, shift) {
         && ctrl == bindCtrl
         && alt == bindAlt
         && shift == bindShift
-        && actions.hasOwnProperty(name)) {
+        && Object.prototype.hasOwnProperty.call(actions, name)) {
         return name;
       }
     }
@@ -923,7 +923,7 @@ function keyHandler(e) {
   }
 
   // By default not to run on site inputs
-  if (e.target.matches('.input') || e.target.matches(ownSettingsSelector)) {
+  if (e.target.matches('input, .input') || e.target.matches(ownSettingsSelector)) {
     stopPropagation = false;
     preventDefault = false;
   }
@@ -931,12 +931,12 @@ function keyHandler(e) {
   if (command
     && (actions[command].constant || (e.type == 'keydown'))
     && (actions[command].repeat || !e.repeat)
-    && (actions[command].input || !e.target.matches('.input'))
+    && (actions[command].input || !e.target.matches('input, .input'))
     && !e.target.matches(ownSettingsSelector)) {
 
     const o = actions[command].fn(e) || {};
-    if (o.hasOwnProperty('stopPropagation')) stopPropagation = o.stopPropagation;
-    if (o.hasOwnProperty('preventDefault')) preventDefault = o.preventDefault;
+    if (Object.prototype.hasOwnProperty.call(o, 'stopPropagation')) stopPropagation = o.stopPropagation;
+    if (Object.prototype.hasOwnProperty.call(o, 'preventDefault')) preventDefault = o.preventDefault;
 
   }
 
@@ -962,7 +962,7 @@ function init() {
     preset_3: presets.preset_3,
     global: presets.global
   });
-  if (getStorage('usePreset') == null) setStorage('usePreset', 'default');
+  if (getStorage('usePreset') == null) setStorage('usePreset', 'preset_1');
 
   // 'capture' is set to true so that the event is dispatched to the handler
   // before the native ones, so that the site shortcuts can be disabled
