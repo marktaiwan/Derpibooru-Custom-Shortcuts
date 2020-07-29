@@ -8,11 +8,9 @@ An userscript manager such as [Violentmonkey](https://violentmonkey.github.io/) 
 [Click here to install](https://github.com/marktaiwan/Derpibooru-Custom-Shortcuts/raw/furbooru/furbooru-custom-shortcuts.user.js)
 
 ## User guide
-By default, the script makes no changes or additions to Derpibooru's default shortcuts. Upon installation, users should open up the settings with `ctrl + shift + /` to begin customization.
+The script have 3 fully configurable preset slots, and the ability to switch between them with the keybind `alt + [1-3]`. Preset 1 is preconfigured with the recommended keybinds, optimized for left hand operation, as a starting point for customization, and is the one the script defaults to upon fresh install.
 
-The script have 3 fully configurable preset slots, and the ability to switch between them with the keybind `alt + [1-3]` by default.
-
-By default preset 1 is preconfigured with the recommended keybinds, optimized for left hand operation, as a starting point for customization.
+To configure keybinds, the settings panel could be called up anytime with `ctrl + shift + /`.
 
 ## Keyboard navigation mode
 Toggle on and off with the `Q` key by default. When enabled, the scroll up/down/left/right keys can be used to highlight thumbnails on the image results page. Images can be navigated to with the `E` key, and the favorite/upvote/mute shortcuts will be applied to the selected image.
