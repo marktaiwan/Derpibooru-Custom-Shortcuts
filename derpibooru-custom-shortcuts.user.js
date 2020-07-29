@@ -693,7 +693,7 @@ function matchKeybind(key, ctrl, alt, shift) {
         && ctrl == bindCtrl
         && alt == bindAlt
         && shift == bindShift
-        && actions.hasOwnProperty(name)) {
+        && Object.prototype.hasOwnProperty.call(actions, name)) {
         return name;
       }
     }
@@ -936,8 +936,8 @@ function keyHandler(e) {
     && !e.target.matches(ownSettingsSelector)) {
 
     const o = actions[command].fn(e) || {};
-    if (o.hasOwnProperty('stopPropagation')) stopPropagation = o.stopPropagation;
-    if (o.hasOwnProperty('preventDefault')) preventDefault = o.preventDefault;
+    if (Object.prototype.hasOwnProperty.call(o, 'stopPropagation')) stopPropagation = o.stopPropagation;
+    if (Object.prototype.hasOwnProperty.call(o, 'preventDefault')) preventDefault = o.preventDefault;
 
   }
 
