@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.8
+// @version      1.2.9
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -363,7 +363,7 @@ const actions = {
   focusComment: {
     name: 'Focus on comment form',
     fn: () => {
-      const commentField = $('#comment_body, #post_body, #message_body');
+      const commentField = $('[name="comment[body]"], [name="post[body]"], [name="message[body]"]');
       if (commentField) {
         commentField.focus();
         return {preventDefault: true};
