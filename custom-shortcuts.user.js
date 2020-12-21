@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.9
+// @version      1.2.10
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -427,6 +427,18 @@ const actions = {
     }
   }
 };
+
+const onReady = (() => {
+  const callbacks = [];
+  document.addEventListener('DOMContentLoaded', () => callbacks.forEach(fn => fn()), {once: true});
+  return (fn) => {
+    if (document.readyState == 'loading') {
+      callbacks.push(fn);
+    } else {
+      fn();
+    }
+  };
+})();
 
 const smoothscroll = (function () {
   let startTime = null;
@@ -978,5 +990,5 @@ function init() {
   });
 }
 
-init();
+onReady(init);
 })();
