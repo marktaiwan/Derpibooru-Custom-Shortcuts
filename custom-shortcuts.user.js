@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.10
+// @version      1.2.11
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
