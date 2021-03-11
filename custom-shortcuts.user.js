@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.11
+// @version      1.2.12
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -249,13 +249,13 @@ const actions = {
     fn: () => {
       let mediaBox = $('.media-box.highlighted');
       if (mediaBox) {
-        click('.media-box__header a.interaction--upvote', mediaBox);
+        click('.media-box__header .interaction--upvote', mediaBox);
       } else {
         mediaBox = $('.media-box:hover');
         if (mediaBox) {
-          click('.media-box__header a.interaction--upvote', mediaBox);
+          click('.media-box__header .interaction--upvote', mediaBox);
         } else {
-          click('.block__header a.interaction--upvote');
+          click('.block__header .interaction--upvote');
         }
       }
     }
@@ -265,13 +265,13 @@ const actions = {
     fn: () => {
       let mediaBox = $('.media-box.highlighted');
       if (mediaBox) {
-        click('.media-box__header a.interaction--fave', mediaBox);
+        click('.media-box__header .interaction--fave', mediaBox);
       } else {
         mediaBox = $('.media-box:hover');
         if (mediaBox) {
-          click('.media-box__header a.interaction--fave', mediaBox);
+          click('.media-box__header .interaction--fave', mediaBox);
         } else {
-          click('.block__header a.interaction--fave');
+          click('.block__header .interaction--fave');
         }
       }
     }
