@@ -190,7 +190,7 @@ const actions = {
       if (highlighted) {
         unhighlight(highlighted);
       } else {
-        const prevSelected = $(`.media-box[data-image-id="${sessionStorage.lastSelectedThumb}"]`);
+        const prevSelected = $(`.media-box[data-post-id="${sessionStorage.lastSelectedThumb}"]`);
         if (prevSelected && isVisible(prevSelected)) {
           highlight(prevSelected);
         } else if (lastSelectedTag && isVisible(lastSelectedTag)) {
@@ -583,7 +583,7 @@ function highlight(selection, setSmooth = true) {
   }
 
   if (selection.matches('.media-box')) {
-    sessionStorage.lastSelectedThumb = selection.dataset.imageId;
+    sessionStorage.lastSelectedThumb = selection.dataset.postId;
   } else {
     lastSelectedTag = selection;
   }
