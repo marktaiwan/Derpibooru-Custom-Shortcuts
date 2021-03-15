@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Twibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.12
+// @version      1.2.13
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -309,12 +309,12 @@ const actions = {
   },
   toggleScale: {
     name: 'Cycle through image scaling',
-    fn: () => click('#image-display')
+    fn: () => click('#image_target')
   },
   toggleVideo: {
     name: 'Play/pause webms',
     fn: () => {
-      const video = $('video#image-display, .highlighted .image-container video');
+      const video = $('#image_target video, .highlighted .image-container video');
       if (!video) return;
       if (video.paused) {
         video.play();
@@ -326,7 +326,7 @@ const actions = {
   toggleSound: {
     name: 'Mute/unmute webms',
     fn: () => {
-      const video = $('video#image-display, .highlighted .image-container video');
+      const video = $('#image_target video, .highlighted .image-container video');
       if (!video) return;
       video.muted = !video.muted;
 
