@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Ponybooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
-// @version      1.2.10
+// @version      1.2.14
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -289,7 +289,7 @@ const actions = {
   },
   tagSubmit: {
     name: 'Save tags',
-    fn: (e) => {
+    fn: e => {
       const target = e.target;
       const submitButtonSelector = '.js-imageform:not(.hidden) #tags-form #edit_save_button';
       let stopPropagation = true;
@@ -402,7 +402,7 @@ const actions = {
     global: true
   },
   unfocus: {
-    fn: (e) => {
+    fn: e => {
       const target = e.target;
       let stopPropagation = true;
 
@@ -431,7 +431,7 @@ const actions = {
 const onReady = (() => {
   const callbacks = [];
   document.addEventListener('DOMContentLoaded', () => callbacks.forEach(fn => fn()), {once: true});
-  return (fn) => {
+  return fn => {
     if (document.readyState == 'loading') {
       callbacks.push(fn);
     } else {
@@ -464,10 +464,12 @@ const smoothscroll = (function () {
     const elapsed = timestamp - startTime;
     const maxVelocity = 40; // px/frame
     const easeDuration = 250;  // ms
+    const scale = window.devicePixelRatio;
 
-    const velocity = (elapsed > easeDuration)
+    const velocity = ((elapsed > easeDuration)
       ? maxVelocity
-      : maxVelocity * (elapsed / easeDuration);
+      : maxVelocity * (elapsed / easeDuration)
+    ) / scale;
 
     let x = 0;
     let y = 0;
