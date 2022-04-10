@@ -465,10 +465,12 @@ const smoothscroll = (function () {
     const elapsed = timestamp - startTime;
     const maxVelocity = 40; // px/frame
     const easeDuration = 250;  // ms
+    const scale = window.devicePixelRatio;
 
-    const velocity = (elapsed > easeDuration)
+    const velocity = ((elapsed > easeDuration)
       ? maxVelocity
-      : maxVelocity * (elapsed / easeDuration);
+      : maxVelocity * (elapsed / easeDuration)
+    ) / scale;
 
     let x = 0;
     let y = 0;
