@@ -290,7 +290,7 @@ const actions = {
   },
   tagSubmit: {
     name: 'Save tags',
-    fn: (e) => {
+    fn: e => {
       const target = e.target;
       const submitButtonSelector = '.js-imageform:not(.hidden) #tags-form #edit_save_button';
       let stopPropagation = true;
@@ -403,7 +403,7 @@ const actions = {
     global: true
   },
   unfocus: {
-    fn: (e) => {
+    fn: e => {
       const target = e.target;
       let stopPropagation = true;
 
@@ -432,7 +432,7 @@ const actions = {
 const onReady = (() => {
   const callbacks = [];
   document.addEventListener('DOMContentLoaded', () => callbacks.forEach(fn => fn()), {once: true});
-  return (fn) => {
+  return fn => {
     if (document.readyState == 'loading') {
       callbacks.push(fn);
     } else {
