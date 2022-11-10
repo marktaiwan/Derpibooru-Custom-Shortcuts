@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
-// @description  Configurable shortcuts and enhanced keyboard navigations. "Ctrl+Shift+/" to open settings.
+// @description  Configurable shortcuts and enhanced keyboard navigation. "Ctrl+Shift+/" to open settings.
 // @version      1.2.14
 // @author       Marker
 // @license      MIT
@@ -262,7 +262,7 @@ const actions = {
     }
   },
   favorite: {
-    name: 'Favourite image',
+    name: 'Favorite image',
     fn: () => {
       let mediaBox = $('.media-box.highlighted');
       if (mediaBox) {
