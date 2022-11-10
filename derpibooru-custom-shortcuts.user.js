@@ -707,7 +707,8 @@ function matchKeybind(key, ctrl, alt, shift) {
         && ctrl == bindCtrl
         && alt == bindAlt
         && shift == bindShift
-        && Object.prototype.hasOwnProperty.call(actions, name)) {
+        && Object.prototype.hasOwnProperty.call(actions, name)
+      ) {
         return name;
       }
     }
