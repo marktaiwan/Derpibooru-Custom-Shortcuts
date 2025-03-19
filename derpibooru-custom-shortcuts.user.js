@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigation. "Ctrl+Shift+/" to open settings.
-// @version      1.2.15
+// @version      1.2.16
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -407,7 +407,7 @@ const actions = {
       const target = e.target;
       let stopPropagation = true;
 
-      if (target.matches('#taginput-fancy-tag_input') && $('.autocomplete')) {
+      if (target.matches('#q, #taginput-fancy-tag_input') && $('.autocomplete:not(.hidden)')) {
         stopPropagation = false;
       } else {
         // default behavior
