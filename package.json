@@ -1,0 +1,17 @@
+{
+    "displayName": "Derpibooru Custom Shortcuts",
+    "name": "derpibooru-custom-shortcuts",
+    "description": "Configurable shortcuts and enhanced keyboard navigation. \"Ctrl+Shift+/\" to open settings.",
+    "private": true,
+    "author": "Marker",
+    "license": "MIT",
+    "homepage": "https://github.com/marktaiwan/Derpibooru-Custom-Shortcuts/",
+    "type": "module",
+    "devDependencies": {
+        "@eslint/js": "^9.22.0",
+        "@stylistic/eslint-plugin": "^4.2.0",
+        "eslint": "^9.22.0",
+        "globals": "^16.0.0",
+        "typescript-eslint": "^8.26.1"
+    }
+}
