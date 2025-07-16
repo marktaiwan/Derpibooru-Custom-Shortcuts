@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Derpibooru Custom Shortcuts
 // @description  Configurable shortcuts and enhanced keyboard navigation. "Ctrl+Shift+/" to open settings.
-// @version      1.2.17
+// @version      1.2.18
 // @author       Marker
 // @license      MIT
 // @namespace    https://github.com/marktaiwan/
@@ -574,7 +574,7 @@ function highlight(selection, setSmooth = true) {
 
   unhighlight($('.highlighted'));
 
-  $('.media-box__content a, .tag a.tag__name', selection).focus({preventScroll: true});
+  $('.media-box__content a, .tag a.tag__name', selection).focus({preventScroll: true, focusVisible: false});
   selection.classList.add('highlighted');
 
   if (!isVisible(selection)) {
