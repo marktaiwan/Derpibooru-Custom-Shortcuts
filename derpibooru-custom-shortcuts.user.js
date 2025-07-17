@@ -475,16 +475,19 @@ const smoothscroll = (function () {
     let x = 0;
     let y = 0;
 
-    if (keydown.up) y += 1;
-    if (keydown.down) y += -1;
+    if (keydown.up) y += -1;
+    if (keydown.down) y += 1;
     if (keydown.left) x += -1;
     if (keydown.right) x += 1;
 
-    const rad = Math.atan2(y, x);
-    x = (x != 0) ? Math.cos(rad) : 0;
-    y = Math.sin(rad) * -1;
+    const length = Math.hypot(x, y);
+    if (length > 0) {
+      window.scrollBy(
+        Math.round(x / length * velocity),
+        Math.round(y / length * velocity)
+      );
+    }
 
-    window.scrollBy(Math.round(x * velocity), Math.round(y * velocity));
     pendingFrame = window.requestAnimationFrame(step);
   }
 
